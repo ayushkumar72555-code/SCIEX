@@ -1,0 +1,1233 @@
+.nbody-app {
+
+    width: 100%;
+
+    color: #edf2f7;
+
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.nbody-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    margin-bottom: 20px;
+
+}
+
+
+.nbody-header h1 {
+
+    margin: 0 0 6px;
+
+    font-size: 24px;
+
+}
+
+
+.nbody-header p {
+
+    margin: 0;
+
+    color: #94a3b8;
+
+    font-size: 14px;
+
+}
+
+
+.nbody-status {
+
+    color: #60a5fa;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+}
+
+
+/* =====================================================
+   MAIN LAYOUT
+===================================================== */
+
+.nbody-layout {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        300px;
+
+    gap: 18px;
+
+}
+
+
+/* =====================================================
+   SIMULATION
+===================================================== */
+
+.nbody-simulation-panel {
+
+    background: #111722;
+
+    border: 1px solid #293445;
+
+    border-radius: 14px;
+
+    padding: 15px;
+
+}
+
+
+.canvas-wrapper {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 650px;
+
+}
+
+
+#nbodyCanvas {
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    background: #03050a;
+
+    border: 1px solid #293445;
+
+    border-radius: 10px;
+
+}
+
+
+/* =====================================================
+   CAMERA CONTROLS
+===================================================== */
+
+.camera-controls {
+
+    position: absolute;
+
+    top: 14px;
+
+    right: 14px;
+
+    display: flex;
+
+    gap: 6px;
+
+    padding: 6px;
+
+    background:
+        rgba(8, 11, 18, 0.88);
+
+    border:
+        1px solid #293445;
+
+    border-radius:
+        9px;
+
+    backdrop-filter:
+        blur(8px);
+
+}
+
+
+.camera-controls button {
+
+    width: 36px;
+
+    height: 32px;
+
+    padding: 0;
+
+    border:
+        1px solid #344154;
+
+    border-radius:
+        6px;
+
+    background:
+        #18202d;
+
+    color:
+        #edf2f7;
+
+    font-size:
+        15px;
+
+    cursor:
+        pointer;
+
+}
+
+
+.camera-controls button:hover {
+
+    border-color:
+        #60a5fa;
+
+    background:
+        #202b3d;
+
+}
+
+
+#autoFit {
+
+    width:
+        45px;
+
+    font-size:
+        11px;
+
+}
+
+
+#fullscreenButton {
+
+    font-size:
+        18px;
+
+}
+
+
+/* =====================================================
+   ZOOM
+===================================================== */
+
+.zoom-indicator {
+
+    position: absolute;
+
+    bottom: 14px;
+
+    right: 14px;
+
+    padding:
+        6px 10px;
+
+    background:
+        rgba(8, 11, 18, 0.88);
+
+    border:
+        1px solid #293445;
+
+    border-radius:
+        6px;
+
+    color:
+        #94a3b8;
+
+    font-size:
+        11px;
+
+    pointer-events:
+        none;
+
+}
+
+
+.zoom-indicator span {
+
+    color:
+        #edf2f7;
+
+}
+
+
+/* =====================================================
+   FULLSCREEN
+===================================================== */
+
+.canvas-wrapper:fullscreen {
+
+    width:
+        100vw;
+
+    height:
+        100vh;
+
+    padding:
+        20px;
+
+    background:
+        #03050a;
+
+}
+
+
+.canvas-wrapper:fullscreen #nbodyCanvas {
+
+    border:
+        0;
+
+    border-radius:
+        0;
+
+}
+
+
+/* =====================================================
+   SIMULATION BUTTONS
+===================================================== */
+
+.nbody-controls {
+
+    display:
+        flex;
+
+    gap:
+        10px;
+
+    margin-top:
+        14px;
+
+}
+
+
+.nbody-controls button,
+.custom-body-actions button {
+
+    padding:
+        10px 18px;
+
+    border:
+        1px solid #293445;
+
+    border-radius:
+        8px;
+
+    background:
+        #18202d;
+
+    color:
+        #edf2f7;
+
+    cursor:
+        pointer;
+
+}
+
+
+.nbody-controls button:hover,
+.custom-body-actions button:hover {
+
+    border-color:
+        #60a5fa;
+
+}
+
+
+.nbody-primary {
+
+    background:
+        #60a5fa !important;
+
+    color:
+        #07111f !important;
+
+    border-color:
+        #60a5fa !important;
+
+}
+
+
+/* =====================================================
+   CONTROL PANEL
+===================================================== */
+
+.nbody-control-panel {
+
+    background:
+        #111722;
+
+    border:
+        1px solid #293445;
+
+    border-radius:
+        14px;
+
+    padding:
+        18px;
+
+}
+
+
+.nbody-control-panel h2 {
+
+    margin:
+        0 0 15px;
+
+    padding-top:
+        15px;
+
+    border-top:
+        1px solid #293445;
+
+    font-size:
+        16px;
+
+}
+
+
+.nbody-control-panel h2:first-child {
+
+    border-top:
+        0;
+
+    padding-top:
+        0;
+
+}
+
+
+.nbody-control {
+
+    margin-bottom:
+        20px;
+
+}
+
+
+.nbody-control label {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    margin-bottom:
+        8px;
+
+    font-size:
+        13px;
+
+}
+
+
+.nbody-control label span {
+
+    color:
+        #60a5fa;
+
+}
+
+
+.nbody-control select {
+
+    width:
+        100%;
+
+    padding:
+        9px;
+
+    background:
+        #18202d;
+
+    color:
+        #edf2f7;
+
+    border:
+        1px solid #293445;
+
+    border-radius:
+        7px;
+
+}
+
+
+.nbody-control input[type="range"] {
+
+    width:
+        100%;
+
+}
+
+
+/* =====================================================
+   CHECKBOXES
+===================================================== */
+
+.nbody-checkbox {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        9px;
+
+    margin:
+        12px 0;
+
+    color:
+        #cbd5e1;
+
+    font-size:
+        13px;
+
+}
+
+
+/* =====================================================
+   PHYSICS INFO
+===================================================== */
+
+.nbody-physics-info {
+
+    display:
+        grid;
+
+    gap:
+        8px;
+
+}
+
+
+.nbody-physics-info > div {
+
+    padding:
+        10px;
+
+    background:
+        #18202d;
+
+    border:
+        1px solid #293445;
+
+    border-radius:
+        8px;
+
+}
+
+
+.nbody-physics-info span {
+
+    display:
+        block;
+
+    color:
+        #94a3b8;
+
+    font-size:
+        11px;
+
+}
+
+
+.nbody-physics-info strong {
+
+    display:
+        block;
+
+    margin-top:
+        4px;
+
+    font-size:
+        14px;
+
+}
+
+
+/* =====================================================
+   CUSTOM BODY LABORATORY
+===================================================== */
+
+.custom-body-section {
+
+    margin-top:
+        18px;
+
+    padding:
+        20px;
+
+    background:
+        #111722;
+
+    border:
+        1px solid #293445;
+
+    border-radius:
+        14px;
+
+}
+
+
+.section-heading {
+
+    margin-bottom:
+        18px;
+
+}
+
+
+.section-heading h2 {
+
+    margin:
+        0 0 5px;
+
+    font-size:
+        18px;
+
+}
+
+
+.section-heading p {
+
+    margin:
+        0;
+
+    color:
+        #94a3b8;
+
+    font-size:
+        13px;
+
+}
+
+
+/* =====================================================
+   FORM
+===================================================== */
+
+.custom-body-form {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(
+                150px,
+                1fr
+            )
+        );
+
+    gap:
+        14px;
+
+}
+
+
+.form-field {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        6px;
+
+}
+
+
+.form-field label {
+
+    color:
+        #94a3b8;
+
+    font-size:
+        12px;
+
+}
+
+
+.form-field input {
+
+    width:
+        100%;
+
+    padding:
+        10px;
+
+    background:
+        #18202d;
+
+    color:
+        #edf2f7;
+
+    border:
+        1px solid #293445;
+
+    border-radius:
+        7px;
+
+    outline:
+        none;
+
+}
+
+
+.form-field input:focus {
+
+    border-color:
+        #60a5fa;
+
+}
+
+
+.custom-body-actions {
+
+    display:
+        flex;
+
+    align-items:
+        flex-end;
+
+    gap:
+        10px;
+
+    grid-column:
+        1 / -1;
+
+}
+
+
+/* =====================================================
+   BODY TABLE
+===================================================== */
+
+.body-table-wrapper {
+
+    margin-top:
+        20px;
+
+    overflow-x:
+        auto;
+
+}
+
+
+.body-table {
+
+    width:
+        100%;
+
+    border-collapse:
+        collapse;
+
+    font-size:
+        12px;
+
+}
+
+
+.body-table th {
+
+    padding:
+        11px;
+
+    color:
+        #7f8da3;
+
+    text-align:
+        left;
+
+    font-weight:
+        600;
+
+    border-bottom:
+        1px solid #293445;
+
+}
+
+
+.body-table td {
+
+    padding:
+        11px;
+
+    color:
+        #cbd5e1;
+
+    border-bottom:
+        1px solid #1e2734;
+
+}
+
+
+.body-table tr:hover td {
+
+    background:
+        #151d29;
+
+}
+
+
+.body-remove-button {
+
+    padding:
+        5px 9px;
+
+    border:
+        1px solid #5b2830;
+
+    border-radius:
+        5px;
+
+    background:
+        #211216;
+
+    color:
+        #fca5a5;
+
+    cursor:
+        pointer;
+
+}
+
+
+.body-remove-button:hover {
+
+    background:
+        #35191f;
+
+}
+
+
+/* =====================================================
+   ANALYSIS
+===================================================== */
+
+.nbody-analysis,
+.nbody-equations {
+
+    margin-top:
+        18px;
+
+    padding:
+        20px;
+
+    background:
+        #111722;
+
+    border:
+        1px solid #293445;
+
+    border-radius:
+        14px;
+
+}
+
+
+.nbody-analysis-header {
+
+    margin-bottom:
+        18px;
+
+}
+
+
+.nbody-analysis-header h2 {
+
+    margin:
+        0 0 5px;
+
+}
+
+
+.nbody-analysis-header p {
+
+    margin:
+        0;
+
+    color:
+        #94a3b8;
+
+    font-size:
+        13px;
+
+}
+
+
+.nbody-body-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(
+                220px,
+                1fr
+            )
+        );
+
+    gap:
+        12px;
+
+}
+
+
+.nbody-body-card {
+
+    padding:
+        16px;
+
+    background:
+        #18202d;
+
+    border:
+        1px solid #293445;
+
+    border-radius:
+        10px;
+
+}
+
+
+.nbody-body-card h3 {
+
+    margin:
+        0 0 12px;
+
+    font-size:
+        15px;
+
+}
+
+
+.nbody-body-card div {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    gap:
+        10px;
+
+    margin:
+        7px 0;
+
+    font-size:
+        12px;
+
+}
+
+
+.nbody-body-card span {
+
+    color:
+        #94a3b8;
+
+}
+
+
+.nbody-body-card strong {
+
+    text-align:
+        right;
+
+    overflow-wrap:
+        anywhere;
+
+}
+
+
+/* =====================================================
+   EQUATIONS
+===================================================== */
+
+.nbody-equation-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(
+                220px,
+                1fr
+            )
+        );
+
+    gap:
+        12px;
+
+}
+
+
+.nbody-equation-card {
+
+    padding:
+        18px;
+
+    background:
+        #18202d;
+
+    border:
+        1px solid #293445;
+
+    border-radius:
+        10px;
+
+}
+
+
+.nbody-equation-card h3 {
+
+    margin:
+        0 0 15px;
+
+    color:
+        #94a3b8;
+
+    font-size:
+        13px;
+
+}
+
+
+.nbody-equation {
+
+    font-family:
+        "Times New Roman",
+        serif;
+
+    font-size:
+        22px;
+
+}
+
+
+.fraction {
+
+    display:
+        inline-flex;
+
+    flex-direction:
+        column;
+
+    vertical-align:
+        middle;
+
+    text-align:
+        center;
+
+    line-height:
+        1;
+
+}
+
+
+.fraction > span {
+
+    border-top:
+        1px solid #edf2f7;
+
+    padding-top:
+        3px;
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (
+    max-width: 1100px
+) {
+
+    .custom-body-form {
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(
+                    150px,
+                    1fr
+                )
+            );
+
+    }
+
+}
+
+
+@media (
+    max-width: 950px
+) {
+
+    .nbody-layout {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .canvas-wrapper {
+
+        height:
+            550px;
+
+    }
+
+}
+
+
+@media (
+    max-width: 600px
+) {
+
+    .nbody-header {
+
+        flex-direction:
+            column;
+
+        gap:
+            10px;
+
+    }
+
+
+    .canvas-wrapper {
+
+        height:
+            420px;
+
+    }
+
+
+    .custom-body-form {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .custom-body-actions {
+
+        grid-column:
+            auto;
+
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
+
+    }
+
+
+    .camera-controls {
+
+        top:
+            10px;
+
+        right:
+            10px;
+
+    }
+
+
+    .camera-controls button {
+
+        width:
+            32px;
+
+        height:
+            30px;
+
+    }
+
+}
+/* =====================================================
+   CANVAS BODY PLACEMENT
+===================================================== */
+
+#canvasAddBodyButton {
+
+    background:
+        #18202d;
+
+    border:
+        1px solid #60a5fa;
+
+    color:
+        #60a5fa;
+
+}
+
+
+#canvasAddBodyButton:hover {
+
+    background:
+        #202b3d;
+
+}
+
+
+.placement-instructions {
+
+    padding:
+        10px;
+
+    margin-top:
+        10px;
+
+    background:
+        #18202d;
+
+    border:
+        1px solid #293445;
+
+    border-radius:
+        7px;
+
+    color:
+        #94a3b8;
+
+    font-size:
+        11px;
+
+    line-height:
+        1.5;
+
+}
+
+
+#nbodyCanvas.placement-active {
+
+    cursor:
+        crosshair;
+
+}
+
+
+.canvas-placement-preview {
+
+    pointer-events:
+        none;
+
+}

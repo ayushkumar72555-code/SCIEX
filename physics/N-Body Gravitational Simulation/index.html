@@ -1,0 +1,896 @@
+<div class="nbody-app">
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <div class="nbody-header">
+
+        <div>
+
+            <h1>
+                N-Body Gravitational Simulation
+            </h1>
+
+            <p>
+                Numerical simulation of gravitational
+                interactions between multiple bodies.
+            </p>
+
+        </div>
+
+
+        <div
+            id="nbodyStatus"
+            class="nbody-status"
+        >
+            READY
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         MAIN LAYOUT
+    ========================================== -->
+
+    <div class="nbody-layout">
+
+
+        <!-- =====================================
+             SIMULATION
+        ====================================== -->
+
+        <section class="nbody-simulation-panel">
+
+            <div class="canvas-wrapper">
+
+                <canvas
+                    id="nbodyCanvas"
+                ></canvas>
+
+
+                <div class="camera-controls">
+
+                    <button
+                        id="zoomOut"
+                        title="Zoom out"
+                    >
+                        −
+                    </button>
+
+
+                    <button
+                        id="zoomReset"
+                        title="Reset zoom"
+                    >
+                        ⟳
+                    </button>
+
+
+                    <button
+                        id="zoomIn"
+                        title="Zoom in"
+                    >
+                        +
+                    </button>
+
+
+                    <button
+                        id="autoFit"
+                        title="Fit system"
+                    >
+                        Fit
+                    </button>
+
+
+                    <button
+                        id="fullscreenButton"
+                        title="Fullscreen"
+                    >
+                        ⛶
+                    </button>
+
+                </div>
+
+
+                <div class="zoom-indicator">
+
+                    Zoom:
+
+                    <span id="zoomValue">
+                        100%
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 SIMULATION CONTROLS
+            ================================== -->
+
+            <div class="nbody-controls">
+
+                <button
+                    id="nbodyStart"
+                    class="nbody-primary"
+                >
+                    Start
+                </button>
+
+
+                <button
+                    id="nbodyPause"
+                >
+                    Pause
+                </button>
+
+
+                <button
+                    id="nbodyReset"
+                >
+                    Reset
+                </button>
+
+                <button
+    id="canvasAddBodyButton"
+>
+    + Canvas Body
+</button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             CONTROL PANEL
+        ====================================== -->
+
+        <aside class="nbody-control-panel">
+
+
+            <h2>
+                Simulation
+            </h2>
+
+
+            <div class="nbody-control">
+
+                <label for="nbodyPreset">
+                    Preset
+                </label>
+
+
+                <select
+                    id="nbodyPreset"
+                >
+
+                    <option value="earth-sun">
+                        Sun + Earth
+                    </option>
+
+                    <option value="earth-moon">
+                        Earth + Moon
+                    </option>
+
+                    <option value="sun-earth-moon">
+                        Sun + Earth + Moon
+                    </option>
+
+                    <option value="binary">
+                        Binary Star
+                    </option>
+
+                    <option value="three-body">
+                        Three Body
+                    </option>
+
+                    <option value="custom">
+                        Custom System
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="nbody-control">
+
+                <label for="nbodyDt">
+
+                    Time Step
+
+                    <span id="nbodyDtValue">
+                        3600 s
+                    </span>
+
+                </label>
+
+
+                <input
+                    id="nbodyDt"
+                    type="range"
+                    min="60"
+                    max="86400"
+                    step="60"
+                    value="3600"
+                >
+
+            </div>
+
+
+            <div class="nbody-control">
+
+                <label for="nbodySpeed">
+
+                    Simulation Speed
+
+                    <span id="nbodySpeedValue">
+                        1×
+                    </span>
+
+                </label>
+
+
+                <input
+                    id="nbodySpeed"
+                    type="range"
+                    min="0.1"
+                    max="20"
+                    step="0.1"
+                    value="1"
+                >
+
+            </div>
+            <h2>
+    Canvas Placement
+</h2>
+
+<label class="nbody-checkbox">
+
+    <input
+        id="placementMode"
+        type="checkbox"
+    >
+
+    Enable Canvas Placement
+
+</label>
+
+<div
+    id="placementInstructions"
+    class="placement-instructions"
+>
+    Click and drag on the simulation
+    to create a body.
+</div>
+
+
+            <!-- =================================
+                 CAMERA
+            ================================== -->
+
+            <h2>
+                Camera
+            </h2>
+
+
+            <label class="nbody-checkbox">
+
+                <input
+                    id="followSystem"
+                    type="checkbox"
+                    checked
+                >
+
+                Follow System
+
+            </label>
+
+
+            <label class="nbody-checkbox">
+
+                <input
+                    id="autoFitCheckbox"
+                    type="checkbox"
+                >
+
+                Auto Fit
+
+            </label>
+
+
+            <!-- =================================
+                 DISPLAY
+            ================================== -->
+
+            <h2>
+                Display
+            </h2>
+
+
+            <label class="nbody-checkbox">
+
+                <input
+                    id="nbodyTrails"
+                    type="checkbox"
+                    checked
+                >
+
+                Show Trails
+
+            </label>
+
+
+            <label class="nbody-checkbox">
+
+                <input
+                    id="nbodyVelocityVectors"
+                    type="checkbox"
+                >
+
+                Velocity Vectors
+
+            </label>
+
+
+            <label class="nbody-checkbox">
+
+                <input
+                    id="nbodyForceVectors"
+                    type="checkbox"
+                >
+
+                Force Vectors
+
+            </label>
+
+
+            <label class="nbody-checkbox">
+
+                <input
+                    id="nbodyLabels"
+                    type="checkbox"
+                    checked
+                >
+
+                Body Labels
+
+            </label>
+
+
+            <!-- =================================
+                 PHYSICS
+            ================================== -->
+
+            <h2>
+                Physics
+            </h2>
+
+
+            <div class="nbody-physics-info">
+
+                <div>
+
+                    <span>
+                        Bodies
+                    </span>
+
+                    <strong id="nbodyCount">
+                        2
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Simulation Time
+                    </span>
+
+                    <strong id="nbodyTime">
+                        0 days
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Total Energy
+                    </span>
+
+                    <strong id="nbodyEnergy">
+                        0 J
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Total Momentum
+                    </span>
+
+                    <strong id="nbodyMomentum">
+                        0 kg·m/s
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+
+    <!-- =========================================
+         CUSTOM BODY LABORATORY
+    ========================================== -->
+
+    <section class="custom-body-section">
+
+
+        <div class="section-heading">
+
+            <div>
+
+                <h2>
+                    Custom Body Laboratory
+                </h2>
+
+                <p>
+                    Add arbitrary bodies to the
+                    gravitational system.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="custom-body-form">
+
+
+            <!-- NAME -->
+
+            <div class="form-field">
+
+                <label for="bodyName">
+                    Name
+                </label>
+
+                <input
+                    id="bodyName"
+                    type="text"
+                    value="Body 1"
+                    placeholder="e.g. Mars"
+                >
+
+            </div>
+
+
+            <!-- MASS -->
+
+            <div class="form-field">
+
+                <label for="bodyMass">
+                    Mass (kg)
+                </label>
+
+                <input
+                    id="bodyMass"
+                    type="number"
+                    value="5.9722e24"
+                    step="any"
+                >
+
+            </div>
+
+
+            <!-- RADIUS -->
+
+            <div class="form-field">
+
+                <label for="bodyRadius">
+                    Radius (km)
+                </label>
+
+                <input
+                    id="bodyRadius"
+                    type="number"
+                    value="6371"
+                    min="0"
+                    step="any"
+                >
+
+            </div>
+
+
+            <!-- X -->
+
+            <div class="form-field">
+
+                <label for="bodyX">
+                    X Position (AU)
+                </label>
+
+                <input
+                    id="bodyX"
+                    type="number"
+                    value="1"
+                    step="any"
+                >
+
+            </div>
+
+
+            <!-- Y -->
+
+            <div class="form-field">
+
+                <label for="bodyY">
+                    Y Position (AU)
+                </label>
+
+                <input
+                    id="bodyY"
+                    type="number"
+                    value="0"
+                    step="any"
+                >
+
+            </div>
+
+
+            <!-- VX -->
+
+            <div class="form-field">
+
+                <label for="bodyVx">
+                    X Velocity (km/s)
+                </label>
+
+                <input
+                    id="bodyVx"
+                    type="number"
+                    value="0"
+                    step="any"
+                >
+
+            </div>
+
+
+            <!-- VY -->
+
+            <div class="form-field">
+
+                <label for="bodyVy">
+                    Y Velocity (km/s)
+                </label>
+
+                <input
+                    id="bodyVy"
+                    type="number"
+                    value="29.7847"
+                    step="any"
+                >
+
+            </div>
+
+
+            <div class="custom-body-actions">
+
+                <button
+                    id="addBodyButton"
+                    class="nbody-primary"
+                >
+                    + Add Body
+                </button>
+
+
+                <button
+                    id="clearBodiesButton"
+                >
+                    Clear Bodies
+                </button>
+
+            </div>
+
+        </div>
+
+        <section
+    id="placementSettings"
+    class="custom-body-section"
+    style="display:none;"
+>
+
+    <div class="section-heading">
+
+        <div>
+
+            <h2>
+                Canvas Body Settings
+            </h2>
+
+            <p>
+                Define the physical properties of
+                the next body created on the canvas.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="custom-body-form">
+
+        <div class="form-field">
+
+            <label for="canvasBodyName">
+                Name
+            </label>
+
+            <input
+                id="canvasBodyName"
+                type="text"
+                value="New Body"
+            >
+
+        </div>
+
+
+        <div class="form-field">
+
+            <label for="canvasBodyMass">
+                Mass (kg)
+            </label>
+
+            <input
+                id="canvasBodyMass"
+                type="number"
+                value="5.9722e24"
+                step="any"
+            >
+
+        </div>
+
+
+        <div class="form-field">
+
+            <label for="canvasBodyRadius">
+                Radius (km)
+            </label>
+
+            <input
+                id="canvasBodyRadius"
+                type="number"
+                value="6371"
+                step="any"
+            >
+
+        </div>
+
+
+        <div class="form-field">
+
+            <label for="canvasVelocityScale">
+                Velocity Scale
+            </label>
+
+            <input
+                id="canvasVelocityScale"
+                type="number"
+                value="0.25"
+                min="0.01"
+                step="0.01"
+            >
+
+        </div>
+
+    </div>
+
+</section>
+
+
+        <!-- =====================================
+             BODY TABLE
+        ====================================== -->
+
+        <div class="body-table-wrapper">
+
+            <table class="body-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            #
+                        </th>
+
+                        <th>
+                            Name
+                        </th>
+
+                        <th>
+                            Mass
+                        </th>
+
+                        <th>
+                            Position
+                        </th>
+
+                        <th>
+                            Velocity
+                        </th>
+
+                        <th>
+                            Action
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody
+                    id="customBodyTable"
+                >
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         SYSTEM ANALYSIS
+    ========================================== -->
+
+    <section class="nbody-analysis">
+
+        <div class="nbody-analysis-header">
+
+            <div>
+
+                <h2>
+                    System Analysis
+                </h2>
+
+                <p>
+                    Current physical state of each body.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="nbodyBodyCards"
+            class="nbody-body-grid"
+        >
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         EQUATIONS
+    ========================================== -->
+
+    <section class="nbody-equations">
+
+        <h2>
+            Physical Model
+        </h2>
+
+
+        <div class="nbody-equation-grid">
+
+
+            <div class="nbody-equation-card">
+
+                <h3>
+                    Gravitational Force
+                </h3>
+
+                <div class="nbody-equation">
+
+                    F = G
+
+                    <span class="fraction">
+
+                        m₁m₂
+
+                        <span>
+                            r²
+                        </span>
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="nbody-equation-card">
+
+                <h3>
+                    Acceleration
+                </h3>
+
+                <div class="nbody-equation">
+
+                    a =
+
+                    <span class="fraction">
+
+                        F
+
+                        <span>
+                            m
+                        </span>
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="nbody-equation-card">
+
+                <h3>
+                    Kinetic Energy
+                </h3>
+
+                <div class="nbody-equation">
+
+                    K = ½mv²
+
+                </div>
+
+            </div>
+
+
+            <div class="nbody-equation-card">
+
+                <h3>
+                    Potential Energy
+                </h3>
+
+                <div class="nbody-equation">
+
+                    U = −G
+
+                    <span class="fraction">
+
+                        m₁m₂
+
+                        <span>
+                            r
+                        </span>
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+</div>

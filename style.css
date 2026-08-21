@@ -1,0 +1,549 @@
+/* =====================================================
+   SCIEX GLOBAL STYLE
+===================================================== */
+
+* {
+
+    box-sizing:
+        border-box;
+
+}
+
+
+html,
+body {
+
+    margin:
+        0;
+
+    padding:
+        0;
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+}
+
+
+body {
+
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background:
+        #080b12;
+
+    color:
+        #edf2f7;
+
+}
+
+
+button,
+input,
+select {
+
+    font:
+        inherit;
+
+}
+
+
+/* =====================================================
+   APPLICATION
+===================================================== */
+
+#app {
+
+    display:
+        flex;
+
+    width:
+        100%;
+
+    height:
+        100vh;
+
+    overflow:
+        hidden;
+
+}
+
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+.sidebar {
+
+    width:
+        260px;
+
+    min-width:
+        260px;
+
+    height:
+        100vh;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    background:
+        #0d121b;
+
+    border-right:
+        1px solid #222b38;
+
+}
+
+
+/* =====================================================
+   BRAND
+===================================================== */
+
+.brand {
+
+    padding:
+        24px 20px;
+
+    border-bottom:
+        1px solid #222b38;
+
+}
+
+
+.brand-name {
+
+    font-size:
+        25px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.08em;
+
+}
+
+
+.brand-subtitle {
+
+    margin-top:
+        5px;
+
+    color:
+        #7f8da3;
+
+    font-size:
+        11px;
+
+    line-height:
+        1.4;
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.navigation {
+
+    flex:
+        1;
+
+    padding:
+        18px 12px;
+
+    overflow-y:
+        auto;
+
+}
+
+
+.nav-section {
+
+    margin-bottom:
+        24px;
+
+}
+
+
+.nav-section-title {
+
+    padding:
+        0 10px 8px;
+
+    color:
+        #68758a;
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.12em;
+
+}
+
+
+.nav-item {
+
+    width:
+        100%;
+
+    padding:
+        11px 12px;
+
+    margin-bottom:
+        4px;
+
+    border:
+        1px solid transparent;
+
+    border-radius:
+        8px;
+
+    background:
+        transparent;
+
+    color:
+        #aeb9c9;
+
+    text-align:
+        left;
+
+    cursor:
+        pointer;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease;
+
+}
+
+
+.nav-item:hover {
+
+    background:
+        #151d29;
+
+    color:
+        #edf2f7;
+
+}
+
+
+.nav-item.active {
+
+    background:
+        #172235;
+
+    border-color:
+        #2c405d;
+
+    color:
+        #ffffff;
+
+}
+
+
+.nav-item.disabled {
+
+    color:
+        #4d596a;
+
+    cursor:
+        not-allowed;
+
+}
+
+
+/* =====================================================
+   SIDEBAR FOOTER
+===================================================== */
+
+.sidebar-footer {
+
+    padding:
+        14px 20px;
+
+    border-top:
+        1px solid #222b38;
+
+    color:
+        #68758a;
+
+    font-size:
+        11px;
+
+}
+
+
+.sidebar-footer span {
+
+    float:
+        right;
+
+}
+
+
+/* =====================================================
+   MAIN CONTENT
+===================================================== */
+
+.main-content {
+
+    flex:
+        1;
+
+    min-width:
+        0;
+
+    height:
+        100vh;
+
+    overflow:
+        auto;
+
+    background:
+        #080b12;
+
+}
+
+
+.module-container {
+
+    width:
+        100%;
+
+    min-height:
+        100%;
+
+    padding:
+        28px;
+
+}
+
+
+/* =====================================================
+   WELCOME SCREEN
+===================================================== */
+
+.welcome-screen {
+
+    min-height:
+        calc(100vh - 56px);
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    text-align:
+        center;
+
+}
+
+
+.welcome-logo {
+
+    margin-bottom:
+        15px;
+
+    font-size:
+        48px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.1em;
+
+}
+
+
+.welcome-screen h1 {
+
+    margin:
+        0;
+
+    font-size:
+        24px;
+
+}
+
+
+.welcome-screen p {
+
+    margin-top:
+        10px;
+
+    color:
+        #7f8da3;
+
+}
+
+
+/* =====================================================
+   MODULE LOADING
+===================================================== */
+
+.module-loading {
+
+    min-height:
+        300px;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    color:
+        #7f8da3;
+
+}
+
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+.module-error {
+
+    padding:
+        20px;
+
+    border:
+        1px solid #5b2830;
+
+    border-radius:
+        10px;
+
+    background:
+        #211216;
+
+    color:
+        #fca5a5;
+
+}
+
+
+.module-error h2 {
+
+    margin-top:
+        0;
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (
+    max-width: 800px
+) {
+
+    .sidebar {
+
+        width:
+            210px;
+
+        min-width:
+            210px;
+
+    }
+
+
+    .module-container {
+
+        padding:
+            18px;
+
+    }
+
+}
+
+
+@media (
+    max-width: 600px
+) {
+
+    .sidebar {
+
+        width:
+            70px;
+
+        min-width:
+            70px;
+
+    }
+
+
+    .brand-subtitle,
+    .nav-section-title,
+    .nav-item span,
+    .sidebar-footer {
+
+        display:
+            none;
+
+    }
+
+
+    .brand {
+
+        text-align:
+            center;
+
+        padding:
+            20px 5px;
+
+    }
+
+
+    .brand-name {
+
+        font-size:
+            17px;
+
+    }
+
+
+    .nav-item {
+
+        text-align:
+            center;
+
+        padding:
+            12px 5px;
+
+    }
+
+}

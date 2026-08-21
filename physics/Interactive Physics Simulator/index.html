@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SCIEX Physics</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<header class="topbar">
+
+    <div class="brand">
+
+        <h1>SCIEX</h1>
+
+        <span>
+            Physics Laboratory
+        </span>
+
+    </div>
+
+
+    <div
+        id="status"
+        class="status"
+    >
+        Ready
+    </div>
+
+</header>
+
+
+
+<main class="app">
+
+
+    <!-- =================================================
+         SIMULATION
+    ================================================== -->
+
+    <section class="simulation-panel">
+
+
+        <div class="section-header">
+
+            <div>
+
+                <h2 id="experimentTitle">
+                    Projectile Motion
+                </h2>
+
+                <p id="experimentDescription">
+                    Numerical simulation.
+                </p>
+
+            </div>
+
+
+            <span
+                id="modelBadge"
+                class="badge"
+            >
+                Ideal
+            </span>
+
+        </div>
+
+
+
+        <canvas
+            id="simulationCanvas"
+        ></canvas>
+
+
+
+        <div class="buttons">
+
+            <button
+                id="startButton"
+                class="primary"
+            >
+                Start
+            </button>
+
+
+            <button
+                id="pauseButton"
+            >
+                Pause
+            </button>
+
+
+            <button
+                id="resetButton"
+            >
+                Reset
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         PARAMETERS
+    ================================================== -->
+
+    <section class="parameters-panel">
+
+
+        <h2>Experiment</h2>
+
+
+        <div class="control">
+
+            <label for="experiment">
+                Experiment
+            </label>
+
+
+            <select id="experiment">
+
+                <option value="projectile">
+                    Projectile Motion
+                </option>
+
+                <option value="freefall">
+                    Free Fall
+                </option>
+
+                <option value="incline">
+                    Inclined Plane
+                </option>
+
+            </select>
+
+        </div>
+
+
+
+        <h2 class="parameter-heading">
+            Parameters
+        </h2>
+
+
+
+        <!-- PROJECTILE -->
+
+        <div
+            id="projectileControls"
+        >
+
+            <div class="control">
+
+                <label for="velocity">
+
+                    Initial Velocity
+
+                    <span>
+
+                        <b id="velocityValue">
+                            20.0
+                        </b>
+
+                        m/s
+
+                    </span>
+
+                </label>
+
+
+                <input
+                    id="velocity"
+                    type="range"
+                    min="0"
+                    max="100"
+                    step="0.1"
+                    value="20"
+                >
+
+            </div>
+
+
+
+            <div class="control">
+
+                <label for="angle">
+
+                    Launch Angle
+
+                    <span>
+
+                        <b id="angleValue">
+                            45
+                        </b>
+
+                        °
+
+                    </span>
+
+                </label>
+
+
+                <input
+                    id="angle"
+                    type="range"
+                    min="0"
+                    max="90"
+                    step="1"
+                    value="45"
+                >
+
+            </div>
+
+        </div>
+
+
+
+        <!-- FREE FALL -->
+
+        <div
+            id="freefallControls"
+            class="hidden"
+        >
+
+            <div class="control">
+
+                <label for="height">
+
+                    Initial Height
+
+                    <span>
+
+                        <b id="heightValue">
+                            100
+                        </b>
+
+                        m
+
+                    </span>
+
+                </label>
+
+
+                <input
+                    id="height"
+                    type="range"
+                    min="1"
+                    max="500"
+                    step="1"
+                    value="100"
+                >
+
+            </div>
+
+
+
+            <div class="control">
+
+                <label for="freefallVelocity">
+
+                    Initial Velocity
+
+                    <span>
+
+                        <b id="freefallVelocityValue">
+                            0.0
+                        </b>
+
+                        m/s
+
+                    </span>
+
+                </label>
+
+
+                <input
+                    id="freefallVelocity"
+                    type="range"
+                    min="-20"
+                    max="20"
+                    step="0.1"
+                    value="0"
+                >
+
+            </div>
+
+        </div>
+
+
+
+        <!-- INCLINED PLANE -->
+
+        <div
+            id="inclineControls"
+            class="hidden"
+        >
+
+            <div class="control">
+
+                <label for="inclineAngle">
+
+                    Incline Angle
+
+                    <span>
+
+                        <b id="inclineAngleValue">
+                            30
+                        </b>
+
+                        °
+
+                    </span>
+
+                </label>
+
+
+                <input
+                    id="inclineAngle"
+                    type="range"
+                    min="0"
+                    max="60"
+                    step="1"
+                    value="30"
+                >
+
+            </div>
+
+
+
+            <div class="control">
+
+                <label for="inclineLength">
+
+                    Plane Length
+
+                    <span>
+
+                        <b id="inclineLengthValue">
+                            20
+                        </b>
+
+                        m
+
+                    </span>
+
+                </label>
+
+
+                <input
+                    id="inclineLength"
+                    type="range"
+                    min="5"
+                    max="100"
+                    step="1"
+                    value="20"
+                >
+
+            </div>
+
+
+
+            <div class="control">
+
+                <label for="inclineVelocity">
+
+                    Initial Velocity
+
+                    <span>
+
+                        <b id="inclineVelocityValue">
+                            0.0
+                        </b>
+
+                        m/s
+
+                    </span>
+
+                </label>
+
+
+                <input
+                    id="inclineVelocity"
+                    type="range"
+                    min="0"
+                    max="30"
+                    step="0.1"
+                    value="0"
+                >
+
+            </div>
+
+
+
+            <div class="control">
+
+                <label for="staticFriction">
+
+                    Static Friction μ<sub>s</sub>
+
+                    <span>
+
+                        <b id="staticFrictionValue">
+                            0.30
+                        </b>
+
+                    </span>
+
+                </label>
+
+
+                <input
+                    id="staticFriction"
+                    type="range"
+                    min="0"
+                    max="1"
+                    step="0.01"
+                    value="0.30"
+                >
+
+            </div>
+
+
+
+            <div class="control">
+
+                <label for="kineticFriction">
+
+                    Kinetic Friction μ<sub>k</sub>
+
+                    <span>
+
+                        <b id="kineticFrictionValue">
+                            0.20
+                        </b>
+
+                    </span>
+
+                </label>
+
+
+                <input
+                    id="kineticFriction"
+                    type="range"
+                    min="0"
+                    max="1"
+                    step="0.01"
+                    value="0.20"
+                >
+
+            </div>
+
+        </div>
+
+
+
+        <!-- COMMON -->
+
+        <div class="control">
+
+            <label for="gravity">
+
+                Gravity
+
+                <span>
+
+                    <b id="gravityValue">
+                        9.81
+                    </b>
+
+                    m/s²
+
+                </span>
+
+            </label>
+
+
+            <input
+                id="gravity"
+                type="range"
+                min="0"
+                max="20"
+                step="0.01"
+                value="9.81"
+            >
+
+        </div>
+
+
+
+        <div class="control">
+
+            <label for="mass">
+
+                Mass
+
+                <span>
+
+                    <b id="massValue">
+                        1.00
+                    </b>
+
+                    kg
+
+                </span>
+
+            </label>
+
+
+            <input
+                id="mass"
+                type="range"
+                min="0.1"
+                max="20"
+                step="0.1"
+                value="1"
+            >
+
+        </div>
+
+
+
+        <div class="control">
+
+            <label for="model">
+                Physics Model
+            </label>
+
+
+            <select id="model">
+
+                <option value="ideal">
+                    Ideal
+                </option>
+
+                <option value="drag">
+                    With Air Resistance
+                </option>
+
+            </select>
+
+        </div>
+
+
+
+        <!-- AIR RESISTANCE -->
+
+        <div
+            id="dragControls"
+            class="drag-section disabled"
+        >
+
+            <h3>
+                Air Resistance
+            </h3>
+
+
+
+            <div class="control">
+
+                <label for="airDensity">
+
+                    Air Density
+
+                    <span>
+
+                        <b id="airDensityValue">
+                            1.225
+                        </b>
+
+                        kg/m³
+
+                    </span>
+
+                </label>
+
+
+                <input
+                    id="airDensity"
+                    type="range"
+                    min="0"
+                    max="2"
+                    step="0.001"
+                    value="1.225"
+                >
+
+            </div>
+
+
+
+            <div class="control">
+
+                <label for="dragCoefficient">
+
+                    Drag Coefficient
+
+                    <span>
+
+                        <b id="dragCoefficientValue">
+                            0.47
+                        </b>
+
+                    </span>
+
+                </label>
+
+
+                <input
+                    id="dragCoefficient"
+                    type="range"
+                    min="0"
+                    max="2"
+                    step="0.01"
+                    value="0.47"
+                >
+
+            </div>
+
+
+
+            <div class="control">
+
+                <label for="area">
+
+                    Cross-sectional Area
+
+                    <span>
+
+                        <b id="areaValue">
+                            0.010
+                        </b>
+
+                        m²
+
+                    </span>
+
+                </label>
+
+
+                <input
+                    id="area"
+                    type="range"
+                    min="0.001"
+                    max="0.1"
+                    step="0.001"
+                    value="0.01"
+                >
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         SIMULATION DATA
+    ================================================== -->
+
+    <section class="data-panel">
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>
+                    Analysis
+                </h2>
+
+                <p>
+                    Numerical measurements and mathematical
+                    calculations.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="analysis-tabs">
+
+            <button
+                class="analysis-tab active"
+                data-tab="simulationData"
+            >
+                Simulation Data
+            </button>
+
+
+            <button
+                class="analysis-tab"
+                data-tab="stepCalculation"
+            >
+                Step-by-Step Calculation
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================================
+             LIVE SIMULATION DATA
+        ================================================== -->
+
+        <div
+            id="simulationData"
+            class="analysis-content active"
+        >
+
+            <div class="data-grid">
+
+
+                <div class="data-card">
+
+                    <span>
+                        Time
+                    </span>
+
+                    <strong id="time">
+                        0.00 s
+                    </strong>
+
+                </div>
+
+
+
+                <div class="data-card">
+
+                    <span id="positionLabel">
+                        Position
+                    </span>
+
+                    <strong id="xPosition">
+                        0.00 m
+                    </strong>
+
+                </div>
+
+
+
+                <div class="data-card">
+
+                    <span id="heightLabel">
+                        Height
+                    </span>
+
+                    <strong id="yPosition">
+                        0.00 m
+                    </strong>
+
+                </div>
+
+
+
+                <div class="data-card">
+
+                    <span>
+                        Speed
+                    </span>
+
+                    <strong id="speed">
+                        0.00 m/s
+                    </strong>
+
+                </div>
+
+
+
+                <div class="data-card">
+
+                    <span>
+                        Acceleration
+                    </span>
+
+                    <strong id="acceleration">
+                        0.00 m/s²
+                    </strong>
+
+                </div>
+
+
+
+                <div class="data-card">
+
+                    <span>
+                        Maximum Height
+                    </span>
+
+                    <strong id="maxHeight">
+                        0.00 m
+                    </strong>
+
+                </div>
+
+
+
+                <div class="data-card">
+
+                    <span id="rangeLabel">
+                        Range
+                    </span>
+
+                    <strong id="range">
+                        0.00 m
+                    </strong>
+
+                </div>
+
+
+
+                <div class="data-card">
+
+                    <span>
+                        Flight / Travel Time
+                    </span>
+
+                    <strong id="flightTime">
+                        0.00 s
+                    </strong>
+
+                </div>
+
+
+
+                <div class="data-card">
+
+                    <span>
+                        Impact Speed
+                    </span>
+
+                    <strong id="impactSpeed">
+                        0.00 m/s
+                    </strong>
+
+                </div>
+
+
+
+                <div class="data-card">
+
+                    <span>
+                        Normal Force
+                    </span>
+
+                    <strong id="normalForce">
+                        0.00 N
+                    </strong>
+
+                </div>
+
+
+
+                <div class="data-card">
+
+                    <span>
+                        Friction Force
+                    </span>
+
+                    <strong id="frictionForce">
+                        0.00 N
+                    </strong>
+
+                </div>
+
+
+
+                <div class="data-card">
+
+                    <span>
+                        Kinetic Energy
+                    </span>
+
+                    <strong id="kineticEnergy">
+                        0.00 J
+                    </strong>
+
+                </div>
+
+
+
+                <div class="data-card">
+
+                    <span>
+                        Potential Energy
+                    </span>
+
+                    <strong id="potentialEnergy">
+                        0.00 J
+                    </strong>
+
+                </div>
+
+
+
+                <div class="data-card">
+
+                    <span>
+                        Total Mechanical Energy
+                    </span>
+
+                    <strong id="totalEnergy">
+                        0.00 J
+                    </strong>
+
+                </div>
+
+
+
+                <div class="data-card">
+
+                    <span>
+                        Momentum
+                    </span>
+
+                    <strong id="momentum">
+                        0.00 kg·m/s
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             STEP BY STEP
+        ================================================== -->
+
+        <div
+            id="stepCalculation"
+            class="analysis-content"
+        >
+
+            <div id="calculationContent">
+
+                <div class="empty-analysis">
+
+                    Select an experiment to see the
+                    mathematical calculation.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         GRAPHS
+    ================================================== -->
+
+    <section class="graphs-panel">
+
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>
+                    Real-time Analysis
+                </h2>
+
+                <p>
+                    Physical quantities measured during
+                    the simulation.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="graphs-grid">
+
+
+            <div class="graph-card">
+
+                <h3>
+                    Position / Height vs Time
+                </h3>
+
+
+                <canvas
+                    id="positionGraph"
+                ></canvas>
+
+            </div>
+
+
+
+            <div class="graph-card">
+
+                <h3>
+                    Velocity vs Time
+                </h3>
+
+
+                <canvas
+                    id="velocityGraph"
+                ></canvas>
+
+            </div>
+
+
+
+            <div class="graph-card">
+
+                <h3>
+                    Energy vs Time
+                </h3>
+
+
+                <canvas
+                    id="energyGraph"
+                ></canvas>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         PHYSICAL MODEL
+    ================================================== -->
+
+    <section class="equation-panel">
+
+        <h2>
+            Physical Model
+        </h2>
+
+        <div id="equations"></div>
+
+    </section>
+
+
+</main>
+
+
+
+<script src="app.js"></script>
+
+
+</body>
+
+</html>
