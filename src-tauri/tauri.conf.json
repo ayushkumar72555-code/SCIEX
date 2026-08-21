@@ -4,7 +4,9 @@
   "version": "0.1.0",
   "identifier": "com.sciex.simulation",
   "build": {
-    "frontendDist": "../"
+    "beforeDevCommand": "node desktop/build.mjs",
+    "beforeBuildCommand": "node desktop/build.mjs",
+    "frontendDist": "../desktop-dist"
   },
   "app": {
     "windows": [
