@@ -1,0 +1,4 @@
+export function InfoPanel({ body }: any) {
+  if (!body) return null;
+  return <aside className="info-panel"><div className="info-kicker">{body.type}</div><h2>{body.name}</h2><p>{body.description}</p><div className="metrics"><div><span>Diameter</span><strong>{body.diameter}</strong></div><div><span>Mass</span><strong>{body.mass}</strong></div><div><span>Surface gravity</span><strong>{body.gravity}</strong></div><div><span>Temperature</span><strong>{body.temperature}</strong></div><div><span>Orbital period</span><strong>{body.period} days</strong></div><div><span>Known moons</span><strong>{body.moons}</strong></div></div><div className="composition"><span>Atmospheric composition</span><div><i style={{width: body.atmosphereMajor}} /></div><small>{body.composition}</small></div></aside>;
+}
