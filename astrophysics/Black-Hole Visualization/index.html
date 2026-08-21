@@ -1,0 +1,73 @@
+<div class="blackhole-app">
+    <header class="blackhole-header">
+        <div>
+            <h1>Black-Hole Visualization</h1>
+            <p>Relativistic visual model of a Schwarzschild black hole, photon sphere and accretion disk.</p>
+        </div>
+        <div id="blackholeStatus" class="blackhole-status">READY</div>
+    </header>
+
+    <div class="blackhole-layout">
+        <section class="blackhole-stage-panel">
+            <div class="blackhole-canvas-wrap">
+                <canvas id="blackholeCanvas"></canvas>
+                <div class="canvas-overlay top-left">SCHWARZSCHILD MODEL</div>
+                <div class="canvas-overlay bottom-left" id="cameraReadout">Inclination 65°</div>
+            </div>
+            <div class="blackhole-actions">
+                <button id="blackholeStart" class="bh-primary">Start</button>
+                <button id="blackholePause">Pause</button>
+                <button id="blackholeReset">Reset</button>
+                <button id="blackholeFullscreen">Fullscreen</button>
+            </div>
+        </section>
+
+        <aside class="blackhole-controls">
+            <h2>Parameters</h2>
+            <div class="bh-control">
+                <label for="bhMass">Black-hole mass <span><b id="bhMassValue">4.30</b> ×10⁶ M☉</span></label>
+                <input id="bhMass" type="range" min="1" max="100" step="0.1" value="4.3">
+            </div>
+            <div class="bh-control">
+                <label for="bhInclination">Disk inclination <span><b id="bhInclinationValue">65</b>°</span></label>
+                <input id="bhInclination" type="range" min="5" max="89" step="1" value="65">
+            </div>
+            <div class="bh-control">
+                <label for="bhDiskSize">Disk outer radius <span><b id="bhDiskSizeValue">12</b> rₛ</span></label>
+                <input id="bhDiskSize" type="range" min="6" max="25" step="0.5" value="12">
+            </div>
+            <div class="bh-control">
+                <label for="bhDiskBrightness">Disk brightness <span><b id="bhDiskBrightnessValue">1.0</b>×</span></label>
+                <input id="bhDiskBrightness" type="range" min="0.2" max="2" step="0.1" value="1">
+            </div>
+
+            <h2>Display</h2>
+            <label class="bh-check"><input id="showPhotonSphere" type="checkbox" checked> Photon sphere</label>
+            <label class="bh-check"><input id="showLensing" type="checkbox" checked> Gravitational lensing</label>
+            <label class="bh-check"><input id="showGrid" type="checkbox"> Coordinate grid</label>
+            <label class="bh-check"><input id="showLabels" type="checkbox" checked> Physical labels</label>
+
+            <h2>Computed quantities</h2>
+            <div class="bh-metrics">
+                <div><span>Schwarzschild radius</span><strong id="bhRs">12.70 million km</strong></div>
+                <div><span>Event horizon</span><strong>r = rₛ</strong></div>
+                <div><span>Photon sphere</span><strong id="bhPhoton">1.50 rₛ</strong></div>
+                <div><span>ISCO</span><strong>3.00 rₛ</strong></div>
+                <div><span>Shadow radius</span><strong>1.30 rₛ</strong></div>
+            </div>
+        </aside>
+    </div>
+
+    <section class="bh-analysis">
+        <div>
+            <h2>Physical Model</h2>
+            <p>This visualization uses Schwarzschild geometry for the black-hole scale and shadow. The luminous disk is a controlled visual model with qualitative relativistic redshift, Doppler asymmetry and lensing cues.</p>
+        </div>
+        <div class="bh-equations">
+            <div><span>Schwarzschild radius</span><strong>rₛ = 2GM/c²</strong></div>
+            <div><span>Photon sphere</span><strong>rᵨ = 3GM/c² = 1.5rₛ</strong></div>
+            <div><span>ISCO, non-rotating</span><strong>rISCO = 6GM/c² = 3rₛ</strong></div>
+            <div><span>Shadow radius</span><strong>rshadow = √27 GM/c² ≈ 1.30rₛ</strong></div>
+        </div>
+    </section>
+</div>
