@@ -1,0 +1,20 @@
+[package]
+name = "sciex"
+version = "0.1.0"
+description = "SCIEX Scientific Simulation Environment"
+authors = ["Ayush Kumar"]
+edition = "2021"
+rust-version = "1.77"
+default-run = "sciex"
+
+[lib]
+name = "sciex_lib"
+crate-type = ["lib", "cdylib", "staticlib"]
+
+[build-dependencies]
+tauri-build = { version = "2" }
+
+[dependencies]
+tauri = { version = "2" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
