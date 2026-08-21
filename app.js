@@ -4,6 +4,7 @@ const modules = {
     physics: { name: 'Interactive Physics Simulator', path: 'physics/Interactive%20Physics%20Simulator/' },
     nbody: { name: 'N-Body Gravitational Simulation', path: 'physics/N-Body%20Gravitational%20Simulation/' },
     solar: { name: 'Solar System Explorer', path: 'astronomy/Solar%20System%20Explorer/' },
+    coordinates: { name: 'Celestial Coordinate Simulator', path: 'astronomy/Celestial%20Coordinate%20Simulator/' },
     blackhole: { name: 'Black-Hole Visualization', path: 'astrophysics/Black-Hole%20Visualization/' }
 };
 
