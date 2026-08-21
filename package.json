@@ -4,7 +4,10 @@
   "private": true,
   "description": "Scientific Simulation Environment for Physics and Astronomy",
   "scripts": {
-    "tauri": "tauri"
+    "tauri": "tauri",
+    "desktop:prepare": "node desktop/build.mjs",
+    "tauri:dev": "npm run desktop:prepare && tauri dev",
+    "tauri:build": "npm run desktop:prepare && tauri build"
   },
   "devDependencies": {
     "@tauri-apps/cli": "2.11.4"
