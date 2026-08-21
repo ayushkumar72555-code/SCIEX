@@ -1,46 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SCIEX</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SCIEX</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="app">
-        <aside class="sidebar">
-            <div class="brand">
-                <div class="brand-name">SCIEX</div>
-                <div class="brand-subtitle">Scientific Simulation Environment</div>
-            </div>
-            <nav class="navigation">
-                <div class="nav-section">
-                    <div class="nav-section-title">PHYSICS</div>
-                    <button class="nav-item" data-module="physics"><span>Interactive Physics</span></button>
-                    <button class="nav-item" data-module="nbody"><span>N-Body Gravity</span></button>
-                </div>
-                <div class="nav-section">
-                    <div class="nav-section-title">ASTRONOMY</div>
-                    <button class="nav-item" data-module="solar"><span>Solar System Explorer</span></button>
-                    <button class="nav-item" data-module="coordinates"><span>Celestial Coordinate Simulator</span></button>
-                </div>
-                <div class="nav-section">
-                    <div class="nav-section-title">ASTROPHYSICS</div>
-                    <button class="nav-item" data-module="blackhole"><span>Black-Hole Visualization</span></button>
-                </div>
-            </nav>
-            <div class="sidebar-footer">SCIEX <span>v0.1</span></div>
-        </aside>
-        <main class="main-content">
-            <div id="moduleContainer" class="module-container">
-                <div class="welcome-screen">
-                    <div class="welcome-logo">SCIEX</div>
-                    <h1>Scientific Simulation Environment</h1>
-                    <p>Select a simulation from the navigation panel to begin.</p>
-                </div>
-            </div>
-        </main>
-    </div>
-    <script src="app.js"></script>
+<div id="app">
+<aside class="sidebar">
+<div class="brand"><div class="brand-name">SCIEX</div><div class="brand-subtitle">Scientific Simulation Environment</div></div>
+<nav class="navigation">
+<div class="nav-section"><div class="nav-section-title">PHYSICS</div>
+<button class="nav-item" data-module="physics"><span>Interactive Physics</span></button>
+<button class="nav-item" data-module="nbody"><span>N-Body Gravity</span></button>
+<button class="nav-item" data-module="emlab"><span>Electromagnetic Field Laboratory</span></button>
+</div>
+<div class="nav-section"><div class="nav-section-title">ASTRONOMY</div>
+<button class="nav-item" data-module="solar"><span>Solar System Explorer</span></button>
+<button class="nav-item" data-module="coordinates"><span>Celestial Coordinate Simulator</span></button>
+</div>
+<div class="nav-section"><div class="nav-section-title">ASTROPHYSICS</div>
+<button class="nav-item" data-module="blackhole"><span>Black-Hole Visualization</span></button>
+</div>
+</nav>
+<div class="sidebar-footer">SCIEX <span>v0.1</span></div>
+</aside>
+<main class="main-content"><div id="moduleContainer" class="module-container"><div class="welcome-screen"><div class="welcome-logo">SCIEX</div><h1>Scientific Simulation Environment</h1><p>Select a simulation from the navigation panel to begin.</p></div></div></main>
+</div>
+<script src="app.js"></script>
 </body>
 </html>
