@@ -1,53 +1,22 @@
 const moduleContainer = document.getElementById('moduleContainer');
 
 const modules = {
-    physics: {
-        name: 'Interactive Physics Simulator',
-        path: 'physics/Interactive%20Physics%20Simulator/'
-    },
-    nbody: {
-        name: 'N-Body Gravitational Simulation',
-        path: 'physics/N-Body%20Gravitational%20Simulation/'
-    },
-    blackhole: {
-        name: 'Black-Hole Visualization',
-        path: 'astrophysics/Black-Hole%20Visualization/'
-    }
+    physics: { name: 'Interactive Physics Simulator', path: 'physics/Interactive%20Physics%20Simulator/' },
+    nbody: { name: 'N-Body Gravitational Simulation', path: 'physics/N-Body%20Gravitational%20Simulation/' },
+    solar: { name: 'Solar System Explorer', path: 'astronomy/Solar%20System%20Explorer/' },
+    blackhole: { name: 'Black-Hole Visualization', path: 'astrophysics/Black-Hole%20Visualization/' }
 };
 
 let currentModule = null;
 
-function ensureAstrophysicsNavigation() {
-    const sections = document.querySelectorAll('.nav-section');
-    const section = [...sections].find(item =>
-        item.querySelector('.nav-section-title')?.textContent.trim().toUpperCase() === 'ASTROPHYSICS'
-    );
-    if (!section) return;
-
-    let button = section.querySelector('[data-module="blackhole"]');
-    if (!button) {
-        button = section.querySelector('.nav-item.disabled');
-        if (button) {
-            button.disabled = false;
-            button.classList.remove('disabled');
-            button.dataset.module = 'blackhole';
-            button.innerHTML = '<span>Black-Hole Visualization</span>';
-        }
-    }
-    if (button) button.addEventListener('click', () => loadModule('blackhole'));
-}
-
 async function loadModule(moduleId) {
     const module = modules[moduleId];
     if (!module) return;
-
     currentModule = moduleId;
     document.querySelectorAll('.nav-item[data-module]').forEach(item => {
         item.classList.toggle('active', item.dataset.module === moduleId);
     });
-
     moduleContainer.innerHTML = `<div class="module-loading">Loading ${module.name}...</div>`;
-
     try {
         const htmlResponse = await fetch(module.path + 'index.html');
         if (!htmlResponse.ok) throw new Error(`Could not load module HTML: ${htmlResponse.status}`);
@@ -86,5 +55,4 @@ document.querySelectorAll('.nav-item[data-module]').forEach(item => {
     item.addEventListener('click', () => loadModule(item.dataset.module));
 });
 
-ensureAstrophysicsNavigation();
 console.log('SCIEX initialized.');
