@@ -1,0 +1,33 @@
+name: SCIEX Desktop Check
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "src-tauri/**"
+      - "desktop/**"
+      - "package.json"
+      - "index.html"
+      - "app.js"
+      - "style.css"
+  pull_request:
+    paths:
+      - "src-tauri/**"
+      - "desktop/**"
+      - "package.json"
+      - "index.html"
+      - "app.js"
+      - "style.css"
+
+jobs:
+  windows-build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+      - uses: dtolnay/rust-toolchain@stable
+      - run: npm install
+      - run: npm run tauri build -- --verbose
