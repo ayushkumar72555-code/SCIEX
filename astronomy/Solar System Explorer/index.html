@@ -1,0 +1,84 @@
+<div class="solar-app">
+    <header class="solar-header">
+        <div>
+            <div class="solar-kicker">ASTRONOMY / ORBITAL DYNAMICS</div>
+            <h1>Solar System Explorer</h1>
+            <p>Interactive 3D heliocentric model with orbital motion, planetary data and cinematic deep-space rendering.</p>
+        </div>
+        <div class="solar-status" id="solarStatus">RUNNING</div>
+    </header>
+
+    <div class="solar-layout">
+        <section class="solar-stage-panel">
+            <div class="solar-stage" id="solarStage">
+                <canvas id="solarCanvas"></canvas>
+                <div class="solar-overlay solar-top-left">HELIOCENTRIC FRAME</div>
+                <div class="solar-overlay solar-bottom-left" id="solarDateReadout">T + 0.0 d</div>
+                <div class="solar-overlay solar-bottom-right" id="solarCameraReadout">CAMERA 1.00 AU</div>
+                <div class="solar-crosshair"></div>
+            </div>
+            <div class="solar-actions">
+                <button id="solarStart" class="solar-primary">Start</button>
+                <button id="solarPause">Pause</button>
+                <button id="solarReset">Reset</button>
+                <button id="solarHome">Home View</button>
+            </div>
+        </section>
+
+        <aside class="solar-controls">
+            <h2>Simulation</h2>
+            <div class="solar-control">
+                <label for="solarSpeed">Time speed <span><b id="solarSpeedValue">30</b> days/s</span></label>
+                <input id="solarSpeed" type="range" min="1" max="180" step="1" value="30">
+            </div>
+            <label class="solar-check"><input id="solarOrbits" type="checkbox" checked> Orbital paths</label>
+            <label class="solar-check"><input id="solarLabels" type="checkbox" checked> Planet labels</label>
+            <label class="solar-check"><input id="solarGrid" type="checkbox"> Reference grid</label>
+            <label class="solar-check"><input id="solarTrails" type="checkbox"> Motion trails</label>
+
+            <h2>Visual scale</h2>
+            <select id="solarScale">
+                <option value="balanced" selected>Balanced</option>
+                <option value="true">True distance scale</option>
+                <option value="compact">Compact system</option>
+            </select>
+
+            <h2>Focus</h2>
+            <select id="solarFocus">
+                <option value="sun">Sun</option>
+                <option value="mercury">Mercury</option>
+                <option value="venus">Venus</option>
+                <option value="earth">Earth</option>
+                <option value="mars">Mars</option>
+                <option value="jupiter">Jupiter</option>
+                <option value="saturn">Saturn</option>
+                <option value="uranus">Uranus</option>
+                <option value="neptune">Neptune</option>
+            </select>
+
+            <h2>Selected body</h2>
+            <div class="solar-body-card">
+                <div class="solar-body-name" id="solarBodyName">Sun</div>
+                <div class="solar-body-type" id="solarBodyType">G-type main-sequence star</div>
+                <div class="solar-metrics">
+                    <div><span>Distance</span><strong id="solarDistance">0 AU</strong></div>
+                    <div><span>Orbital period</span><strong id="solarPeriod">—</strong></div>
+                    <div><span>Orbital velocity</span><strong id="solarVelocity">—</strong></div>
+                    <div><span>Radius</span><strong id="solarRadius">696,340 km</strong></div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <section class="solar-info">
+        <div>
+            <h2>Model</h2>
+            <p>Planetary distances and orbital periods use approximate real Solar System values. Planet radii are visually exaggerated so the bodies remain visible in a large-scale 3D scene.</p>
+        </div>
+        <div class="solar-equations">
+            <div><span>Kepler's third law</span><strong>T² ∝ a³</strong></div>
+            <div><span>Orbital speed</span><strong>v ≈ √(GM☉/r)</strong></div>
+            <div><span>Distance unit</span><strong>1 AU = 149.6 million km</strong></div>
+        </div>
+    </section>
+</div>
