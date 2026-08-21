@@ -186,6 +186,26 @@ async function loadModule(
         );
 
 
+        /*
+           Load N-body collision physics after the
+           main N-body simulator has defined its
+           physics state and integration function.
+        */
+
+        if (
+            moduleId === "nbody"
+        ) {
+
+            await loadJavaScript(
+
+                module.path +
+                "collision.js"
+
+            );
+
+        }
+
+
     }
 
     catch (error) {
